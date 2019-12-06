@@ -15,12 +15,14 @@ public class AuthorizeController {
     @GetMapping("/callback")
     public String callback(@RequestParam(name="code") String code,
                            @RequestParam(name="state") String state){
+        System.out.println(code);
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
         accessTokenDTO.setClient_id("38dba2429e274411da64");
         accessTokenDTO.setClient_secret("6f563938749684b97056cc17ce7c682545d6ad94");
         accessTokenDTO.setCode(code);
         accessTokenDTO.setRedirect_uri("http://localhost:8080/callback");
         accessTokenDTO.setState(state);
+        System.out.println("asaaaaa");
         githubProvider.getAccessToken(accessTokenDTO);
         return "index";
     }
